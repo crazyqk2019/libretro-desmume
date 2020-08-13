@@ -1,4 +1,4 @@
-#include <stdarg.h>
+﻿#include <stdarg.h>
 #include <libretro.h>
 
 #if defined(VITA)
@@ -726,9 +726,9 @@ static void check_variables(bool first_boot)
 
       if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
       {
-          if (!strcmp(var.value, "jit"))
+          if (!strcmp(var.value, "即时重编译器"))
               CommonSettings.use_jit = true;
-          else if (!strcmp(var.value, "interpreter"))
+          else if (!strcmp(var.value, "解释器"))
               CommonSettings.use_jit = false;
       }
      else
@@ -811,7 +811,7 @@ static void check_variables(bool first_boot)
       var.key = "desmume_color_depth";
       if (opengl_mode && environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
       {
-          if (!strcmp(var.value, "32-bit"))
+          if (!strcmp(var.value, "32位"))
           {
               colorMode = RETRO_PIXEL_FORMAT_XRGB8888;
               bpp = 4;
@@ -902,21 +902,21 @@ static void check_variables(bool first_boot)
        static int old_layout_id      = -1;
        unsigned new_layout_id        = 0;
 
-       if (!strcmp(var.value, "top/bottom"))
+       if (!strcmp(var.value, "顶部/底部"))
           new_layout_id = LAYOUT_TOP_BOTTOM;
-       else if (!strcmp(var.value, "bottom/top"))
+       else if (!strcmp(var.value, "底部/顶部"))
           new_layout_id = LAYOUT_BOTTOM_TOP;
-       else if (!strcmp(var.value, "left/right"))
+       else if (!strcmp(var.value, "左/右"))
           new_layout_id = LAYOUT_LEFT_RIGHT;
-       else if (!strcmp(var.value, "right/left"))
+       else if (!strcmp(var.value, "右/左"))
           new_layout_id = LAYOUT_RIGHT_LEFT;
-       else if (!strcmp(var.value, "top only"))
+       else if (!strcmp(var.value, "仅顶部"))
            new_layout_id = LAYOUT_TOP_ONLY;
-       else if (!strcmp(var.value, "bottom only"))
+       else if (!strcmp(var.value, "仅底部"))
            new_layout_id = LAYOUT_BOTTOM_ONLY;
-       else if(!strcmp(var.value, "hybrid/top"))
+       else if(!strcmp(var.value, "混合/顶部"))
            new_layout_id = LAYOUT_HYBRID_TOP_ONLY;
-       else if(!strcmp(var.value, "hybrid/bottom"))
+       else if(!strcmp(var.value, "混合/底部"))
            new_layout_id = LAYOUT_HYBRID_BOTTOM_ONLY;
 
        if (old_layout_id != new_layout_id)
@@ -958,11 +958,11 @@ static void check_variables(bool first_boot)
 
     if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
     {
-        if (!strcmp(var.value, "emulated"))
+        if (!strcmp(var.value, "模拟"))
             pointer_device_l = 1;
-        else if(!strcmp(var.value, "absolute"))
+        else if(!strcmp(var.value, "绝对值"))
             pointer_device_l = 2;
-        else if (!strcmp(var.value, "pressed"))
+        else if (!strcmp(var.value, "按下"))
             pointer_device_l = 3;
         else
             pointer_device_l=0;
@@ -974,11 +974,11 @@ static void check_variables(bool first_boot)
 
     if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
     {
-        if (!strcmp(var.value, "emulated"))
+        if (!strcmp(var.value, "模拟"))
             pointer_device_r = 1;
-        else if(!strcmp(var.value, "absolute"))
+        else if(!strcmp(var.value, "绝对值"))
             pointer_device_r = 2;
-        else if (!strcmp(var.value, "pressed"))
+        else if (!strcmp(var.value, "按下"))
             pointer_device_r = 3;
         else
             pointer_device_r=0;
@@ -995,7 +995,7 @@ static void check_variables(bool first_boot)
 
     if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
     {
-        touchEnabled = var.value && (!strcmp(var.value, "touch"));
+        touchEnabled = var.value && (!strcmp(var.value, "触摸屏"));
     }
 
     var.key = "desmume_mouse_speed";
@@ -1029,13 +1029,13 @@ static void check_variables(bool first_boot)
     {
         static const struct { const char* name; int id; } languages[] =
         {
-            { "Auto", -1 },
-            { "Japanese", 0 },
-            { "English", 1 },
-            { "French", 2 },
-            { "German", 3 },
-            { "Italian", 4 },
-            { "Spanish", 5 }
+            { "自动", -1 },
+            { "日语", 0 },
+            { "英语", 1 },
+            { "法语", 2 },
+            { "德语", 3 },
+            { "意大利语", 4 },
+            { "西班牙语", 5 }
         };
 
         for (int i = 0; i < 7; i ++)
@@ -1275,27 +1275,27 @@ static void check_variables(bool first_boot)
    var.key = "desmume_pointer_colour";
    if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
    {
-       if(!strcmp(var.value, "white"))
+       if(!strcmp(var.value, "白色"))
        {
            pointer_colour = 0xFFFF;
            pointer_color_32 = 0xFFFFFFFF;
        }
-       else if (!strcmp(var.value, "black"))
+       else if (!strcmp(var.value, "黑色"))
        {
            pointer_colour = 0x0000;
            pointer_color_32 = 0x00000000;
        }
-       else if(!strcmp(var.value, "red"))
+       else if(!strcmp(var.value, "红色"))
        {
            pointer_colour = 0xF800;
            pointer_color_32 = 0xFF0000FF;
        }
-       else if(!strcmp(var.value, "yellow"))
+       else if(!strcmp(var.value, "黄色"))
        {
            pointer_colour = 0xFFE0;
            pointer_color_32 = 0x0000FFFF;
        }
-       else if(!strcmp(var.value, "blue"))
+       else if(!strcmp(var.value, "蓝色"))
        {
            pointer_colour = 0x001F;
            pointer_color_32 = 0xFFFF0000;
@@ -1378,57 +1378,57 @@ void retro_set_environment(retro_environment_t cb)
 
    static const retro_variable values[] =
    {
-      { "desmume_firmware_language", "Firmware Language; Auto|English|Japanese|French|German|Italian|Spanish" },
-      { "desmume_use_external_bios", "Use External BIOS/Firmware (restart); disabled|enabled" },
-      { "desmume_boot_into_bios", "Boot Into BIOS (interpreter and external bios only); disabled|enabled"},
-      { "desmume_load_to_memory", "Load Game Into Memory (restart); disabled|enabled" },
-      { "desmume_num_cores", "CPU Cores; 1|2|3|4" },
+      { "desmume_firmware_language", "固件语言; 自动|英语|日语|法语|德语|意大利语|西班牙语" },
+      { "desmume_use_external_bios", "使用外部BIOS/固件（须重启）; disabled|enabled" },
+      { "desmume_boot_into_bios", "启动到BIOS（只针对解释器和外部BIOS）; disabled|enabled"},
+      { "desmume_load_to_memory", "载入游戏到内存（须重启）; disabled|enabled" },
+      { "desmume_num_cores", "CPU核心数; 1|2|3|4" },
 #ifdef HAVE_JIT
 #if defined(IOS) || defined(ANDROID)
-      { "desmume_cpu_mode", "CPU Mode; interpreter|jit" },
+      { "desmume_cpu_mode", "CPU模式; 解释器|即时重编译器" },
 #else
-      { "desmume_cpu_mode", "CPU Mode (restart); jit|interpreter" },
+      { "desmume_cpu_mode", "CPU模式（须重启）; 即时重编译器|解释器" },
 #endif
       { "desmume_jit_block_size", "JIT Block Size; 12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|0|1|2|3|4|5|6|7|8|9|10|11" },
 #else
-      { "desmume_cpu_mode", "CPU Mode; interpreter" },
+      { "desmume_cpu_mode", "CPU模式; 解释器" },
 #endif
-      { "desmume_advanced_timing", "Enable Advanced Bus-Level Timing; enabled|disabled" },
-      { "desmume_frameskip", "Frameskip; 0|1|2|3|4|5|6|7|8|9" },
-      { "desmume_internal_resolution", "Internal Resolution; 256x192|512x384|768x576|1024x768|1280x960|1536x1152|1792x1344|2048x1536|2304x1728|2560x1920" },
+      { "desmume_advanced_timing", "高级总线级别时序; enabled|disabled" },
+      { "desmume_frameskip", "跳帧; 0|1|2|3|4|5|6|7|8|9" },
+      { "desmume_internal_resolution", "内部分辨率; 256x192|512x384|768x576|1024x768|1280x960|1536x1152|1792x1344|2048x1536|2304x1728|2560x1920" },
 #ifdef HAVE_OPENGL
-      { "desmume_opengl_mode", "OpenGL Rasterizer (restart); disabled|enabled" },
-      { "desmume_color_depth", "OpenGL: Color Depth (restart); 16-bit|32-bit"},
-      { "desmume_gfx_multisampling", "OpenGL: Multisampling AA; disabled|2|4|8|16|32" },
-      { "desmume_gfx_texture_smoothing", "OpenGL: Texture Smoothing; disabled|enabled" },
-      { "desmume_opengl_shadow_polygon", "OpenGL: Shadow Polygons; enabled|disabled" },
-      { "desmume_opengl_special_zero_alpha", "OpenGL: Special 0 Alpha; enabled|disabled" },
-      { "desmume_opengl_nds_depth_calculation", "OpenGL: NDS Depth Calculation; enabled|disabled" },
-      { "desmume_opengl_depth_lequal_polygon_facing", "OpenGL: Depth-LEqual Polygon Facing; disabled|enabled" },
+      { "desmume_opengl_mode", "OpenGL光栅化（须重启）; disabled|enabled" },
+      { "desmume_color_depth", "OpenGL: 色彩位深（须重启）; 16位|32位"},
+      { "desmume_gfx_multisampling", "OpenGL: 多重取样抗锯齿; disabled|2|4|8|16|32" },
+      { "desmume_gfx_texture_smoothing", "OpenGL: 纹理平滑; disabled|enabled" },
+      { "desmume_opengl_shadow_polygon", "OpenGL: 阴影多边形; enabled|disabled" },
+      { "desmume_opengl_special_zero_alpha", "OpenGL: 特殊0阿尔法通道; enabled|disabled" },
+      { "desmume_opengl_nds_depth_calculation", "OpenGL: NDS深度计算; enabled|disabled" },
+      { "desmume_opengl_depth_lequal_polygon_facing", "OpenGL: 深度LEqual多边形饰面; disabled|enabled" },
 #endif
-      { "desmume_gfx_highres_interpolate_color", "Soft3D: High-res Color Interpolation; disabled|enabled" },
-      { "desmume_gfx_linehack", "Soft3D: Line Hack; enabled|disabled" },
-      { "desmume_gfx_txthack", "Soft3D: Texture Hack; disabled|enabled"},
-      { "desmume_gfx_edgemark", "Edge Marking; enabled|disabled" },
-      { "desmume_gfx_texture_scaling", "Texture Scaling (xBrz); 1|2|4" },
-      { "desmume_gfx_texture_deposterize", "Texture Deposterization; disabled|enabled" },
-      { "desmume_screens_layout", "Screen Layout; top/bottom|bottom/top|left/right|right/left|top only|bottom only|hybrid/top|hybrid/bottom" },
-      { "desmume_screens_gap", "Screen Gap; 0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100" },
-      { "desmume_hybrid_layout_ratio", "Hybrid Layout: Ratio; 3:1|2:1" },
-      { "desmume_hybrid_layout_scale", "Hybrid Layout: Scale So Small Screen is 1:1px; disabled|enabled" },
-      { "desmume_hybrid_showboth_screens", "Hybrid Layout: Show Both Screens; enabled|disabled"},
-      { "desmume_hybrid_cursor_always_smallscreen", "Hybrid Layout: Cursor Always on Small Screen; enabled|disabled"},
-      { "desmume_pointer_mouse", "Mouse/Pointer; enabled|disabled" },
-      { "desmume_pointer_type", "Pointer Type; mouse|touch" },
-      { "desmume_mouse_speed", "Mouse Speed; 1.0|1.5|2.0|0.01|0.02|0.03|0.04|0.05|0.125|0.25|0.5" },
-      { "desmume_input_rotation", "Pointer Rotation; 0|90|180|270" },
-      { "desmume_pointer_device_l", "Pointer Mode for Left Analog; none|emulated|absolute|pressed" },
-      { "desmume_pointer_device_r", "Pointer Mode for Right Analog; none|emulated|absolute|pressed" },
-      { "desmume_pointer_device_deadzone", "Emulated Pointer Deadzone Percent; 15|20|25|30|35|0|5|10" },
-      { "desmume_pointer_device_acceleration_mod", "Emulated Pointer Acceleration Modifier Percent; 0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100" },
-      { "desmume_pointer_stylus_pressure", "Emulated Stylus Pressure Modifier Percent; 50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|" },
-      { "desmume_pointer_colour", "Pointer Colour; white|black|red|blue|yellow"},
-      { "desmume_mic_mode", "Microphone Button Noise Type; pattern|random" },
+      { "desmume_gfx_highres_interpolate_color", "Soft3D: 高分辨率色彩插值; disabled|enabled" },
+      { "desmume_gfx_linehack", "Soft3D: 线条修改; enabled|disabled" },
+      { "desmume_gfx_txthack", "Soft3D: 纹理修改; disabled|enabled"},
+      { "desmume_gfx_edgemark", "边缘标记; enabled|disabled" },
+      { "desmume_gfx_texture_scaling", "纹理缩放 (xBrz); 1|2|4" },
+      { "desmume_gfx_texture_deposterize", "纹理反色调分离; disabled|enabled" },
+      { "desmume_screens_layout", "屏幕布局; 顶部/底部|底部/顶部|左/右|右/左|仅顶部|仅底部|混合/顶部|混合/底部" },
+      { "desmume_screens_gap", "屏幕间隙; 0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100" },
+      { "desmume_hybrid_layout_ratio", "混合布局：比例; 3:1|2:1" },
+      { "desmume_hybrid_layout_scale", "混合布局：缩放到小屏为1:1像素; disabled|enabled" },
+      { "desmume_hybrid_showboth_screens", "混合布局：同时显示两个屏幕; enabled|disabled"},
+      { "desmume_hybrid_cursor_always_smallscreen", "混合布局：光标总是在小屏上; enabled|disabled"},
+      { "desmume_pointer_mouse", "鼠标/指针; enabled|disabled" },
+      { "desmume_pointer_type", "指针类型; 鼠标|触摸屏" },
+      { "desmume_mouse_speed", "鼠标速度; 1.0|1.5|2.0|0.01|0.02|0.03|0.04|0.05|0.125|0.25|0.5" },
+      { "desmume_input_rotation", "指针旋转; 0|90|180|270" },
+      { "desmume_pointer_device_l", "左摇杆指针模式; 无|模拟|绝对值|按下" },
+      { "desmume_pointer_device_r", "右摇杆指针模式; 无|模拟|绝对值|按下" },
+      { "desmume_pointer_device_deadzone", "模拟指针死区百分比; 15|20|25|30|35|0|5|10" },
+      { "desmume_pointer_device_acceleration_mod", "模拟指针加速修正百分比; 0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100" },
+      { "desmume_pointer_stylus_pressure", "模拟手写压力修正百分比; 50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|" },
+      { "desmume_pointer_colour", "指针色彩; 白色|黑色|红色|蓝色|黄色"},
+      { "desmume_mic_mode", "麦克风按钮噪音类型; 样式化|随机" },
       { 0, 0 }
    };
 
@@ -2408,22 +2408,22 @@ bool retro_load_game(const struct retro_game_info *game)
 #endif
 
 struct retro_input_descriptor desc[] = {
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_LEFT,   "Left" },
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_UP,     "Up" },
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_DOWN,   "Down" },
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_RIGHT,  "Right" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_LEFT,   "左" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_UP,     "上" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_DOWN,   "下" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_RIGHT,  "右" },
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_X,      "X" },
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_Y,      "Y" },
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_B,      "B" },
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_A,      "A" },
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_L,      "L" },
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_L2,     "Lid Close/Open" },
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_L3,     "Make Microphone Noise" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_L2,     "机器合上/打开" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_L3,     "产生麦克风噪音" },
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_R,      "R" },
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_R2,     "Tap Stylus" },
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_R3,     "Quick Screen Switch" },
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_START,  "Start" },
-      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_SELECT,  "Select" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_R2,     "手写点击" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_R3,     "快速屏幕切换" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_START,  "开始" },
+      { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_SELECT,  "选择" },
 
       { 0 },
    };
