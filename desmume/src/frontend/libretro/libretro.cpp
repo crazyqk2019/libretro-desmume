@@ -902,21 +902,21 @@ static void check_variables(bool first_boot)
        static int old_layout_id      = -1;
        unsigned new_layout_id        = 0;
 
-       if (!strcmp(var.value, "顶部/底部"))
+       if (!strcmp(var.value, "上屏/下屏"))
           new_layout_id = LAYOUT_TOP_BOTTOM;
-       else if (!strcmp(var.value, "底部/顶部"))
+       else if (!strcmp(var.value, "下屏/上屏"))
           new_layout_id = LAYOUT_BOTTOM_TOP;
        else if (!strcmp(var.value, "左/右"))
           new_layout_id = LAYOUT_LEFT_RIGHT;
        else if (!strcmp(var.value, "右/左"))
           new_layout_id = LAYOUT_RIGHT_LEFT;
-       else if (!strcmp(var.value, "仅顶部"))
+       else if (!strcmp(var.value, "仅上屏"))
            new_layout_id = LAYOUT_TOP_ONLY;
-       else if (!strcmp(var.value, "仅底部"))
+       else if (!strcmp(var.value, "仅下屏"))
            new_layout_id = LAYOUT_BOTTOM_ONLY;
-       else if(!strcmp(var.value, "混合/顶部"))
+       else if(!strcmp(var.value, "混合/下屏"))
            new_layout_id = LAYOUT_HYBRID_TOP_ONLY;
-       else if(!strcmp(var.value, "混合/底部"))
+       else if(!strcmp(var.value, "混合/上屏"))
            new_layout_id = LAYOUT_HYBRID_BOTTOM_ONLY;
 
        if (old_layout_id != new_layout_id)
@@ -1412,7 +1412,7 @@ void retro_set_environment(retro_environment_t cb)
       { "desmume_gfx_edgemark", "边缘标记; enabled|disabled" },
       { "desmume_gfx_texture_scaling", "纹理缩放 (xBrz); 1|2|4" },
       { "desmume_gfx_texture_deposterize", "纹理反色调分离; disabled|enabled" },
-      { "desmume_screens_layout", "屏幕布局; 顶部/底部|底部/顶部|左/右|右/左|仅顶部|仅底部|混合/顶部|混合/底部" },
+      { "desmume_screens_layout", "屏幕布局; 上屏/下屏|下屏/上屏|左/右|右/左|仅上屏|仅下屏|混合/上屏|混合/下屏" },
       { "desmume_screens_gap", "屏幕间隙; 0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100" },
       { "desmume_hybrid_layout_ratio", "混合布局：比例; 3:1|2:1" },
       { "desmume_hybrid_layout_scale", "混合布局：缩放到小屏为1:1像素; disabled|enabled" },
